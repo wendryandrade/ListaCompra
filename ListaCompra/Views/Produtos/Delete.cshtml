@@ -1,0 +1,47 @@
+﻿@model ListaCompra.Models.Produto
+
+@{
+    ViewBag.Title = "Excluir produto";
+}
+
+<h2>Excluir</h2>
+
+<h3>Você tem certeza que quer excluir este produto?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoProduto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoProduto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecoUnitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecoUnitario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para lista", "Index")
+        </div>
+    }
+</div>

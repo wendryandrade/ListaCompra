@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Página Inicial";
+}
+
+<div class="jumbotron">
+    <h1>Lista de Compras</h1>
+</div>
+
+<div class="row">
+
+    @foreach (var Produto in ViewBag.Produtos)
+    {
+        <div class="col-md-4">
+            <h2>@Produto.Descricao</h2>
+            <p>Preço: R$ @Produto.PrecoUnitario</p>
+            <p><button class="AdicionarProduto btn btn-default" data-id="@Produto.Id"><i class="fa fa-cart-plus" aria-hidden="true"></i></button></p>
+        </div>
+    }
+
+</div>
+
+@section scripts {
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".AdicionarProduto").click(function () {
+            $.ajax({
+                type: 'get',
+                url: '/Compras/AdicionarProduto?IdProduto=' + $(this).data("id"),
+                success: function (response) {
+                    alert("Produto adicionado no carrinho");
+                    console.log("OK");
+                },
+                error: function (data) {
+                }
+            });
+        });
+    });
+</script>
+}
